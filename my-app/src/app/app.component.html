@@ -1,0 +1,61 @@
+<div>
+  <form>
+    <h1>CRUD Operation {{title}}</h1>
+    <app-testing></app-testing>
+    <div class="inputs_spacs">
+      <label for="name">Name</label>
+      <input type="text" placeholder="Enter Your Name" #name_Input name="name"><br>
+    </div>
+  
+    <div class="inputs_spacs">
+      <label for="email">Email</label>
+      <input type="email" placeholder="Enter Your Email" name="email"><br>
+    </div>
+  
+    <div class="inputs_spacs">
+      <label for="password">Password</label>
+      <input type="password" placeholder="Enter Your Password" name="password"><br>
+    </div>
+  
+    <div class="inputs_spacs gender-input">
+      <label>Gender</label>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="gender" value="male"> Male
+        </label>
+        <label>
+          <input type="radio" name="gender" value="female"> Female
+        </label>
+        <label>
+          <input type="radio" name="gender" value="others"> Others
+        </label>
+      </div>
+    </div>
+  
+    <div class="inputs_spacs">
+      <label for="dob">Date of Birth</label>
+      <input type="date" name="dob"><br>
+    </div>
+  
+    <div class="inputs_spacs">
+      <label for="city">City</label>
+      <select name="city">
+        <option>Select any one</option>
+        <option>Ahmadabad</option>
+        <option>Baroda</option>
+        <option>Rajkot</option>
+        <option>Surat</option>
+      </select><br>
+    </div>
+  
+    <div class="inputs_spacs">
+      <label for="agree">Are you agree with terms & conditions</label>
+      <input type="checkbox" name="agree"><br>
+    </div>
+  
+    <div class="inputs_spacs">
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </div>
+  </form>
+</div>
