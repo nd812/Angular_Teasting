@@ -1,58 +1,95 @@
-<div>
-  <form>
-    <h1>CRUD Operation {{title}}</h1>
-    <app-testing></app-testing>
+<div class="container">
+
+  <h1>Log-In Form</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    
+
     <div class="inputs_spacs">
       <label for="name">Name</label>
-      <input type="text" placeholder="Enter Your Name" #name_Input name="name"><br>
+      <input type="text" placeholder="Enter Your Name" #name_Input name="name" formControlName="name"><br>
+      <span style="color:red;" *ngIf="name && name.invalid && name.touched">Please enter appropriate name</span>
     </div>
-  
+
+    <div class="inputs_spacs">
+      <label for="phoneNumber">Phone number</label>
+      <input type="tel" placeholder="Enter your phone number" #name_Input name="phoneNumber" formControlName="phoneNumber"><br>
+      <span style="color:red;" *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched">Please enter your phone number</span>
+    </div>
+
     <div class="inputs_spacs">
       <label for="email">Email</label>
-      <input type="email" placeholder="Enter Your Email" name="email"><br>
+      <input type="email" placeholder="Enter Your Email" name="email" formControlName="email"><br>
+      <span style="color:red;" *ngIf="email && email.invalid && email.touched">Please enter appropriate email</span>
     </div>
-  
+
     <div class="inputs_spacs">
       <label for="password">Password</label>
-      <input type="password" placeholder="Enter Your Password" name="password"><br>
+      <input type="password" placeholder="Enter Your Password" name="password" formControlName="password"><br>
+      <span style="color:red;" *ngIf="password && password.invalid && password.touched">Please enter appropriate password</span>
     </div>
-  
+    
+
+
     <div class="inputs_spacs gender-input">
       <label>Gender</label>
       <div class="radio-group">
         <label>
-          <input type="radio" name="gender" value="male"> Male
+          <input type="radio" name="gender" value="male" formControlName="gender"> Male
         </label>
         <label>
-          <input type="radio" name="gender" value="female"> Female
+          <input type="radio" name="gender" value="female" formControlName="gender"> Female
         </label>
         <label>
-          <input type="radio" name="gender" value="others"> Others
+          <input type="radio" name="gender" value="others" formControlName="gender"> Others
         </label>
+        <span style="color:red;" *ngIf="gender && gender.invalid && gender.touched">Please select yor gender</span>
       </div>
     </div>
-  
+
     <div class="inputs_spacs">
       <label for="dob">Date of Birth</label>
-      <input type="date" name="dob"><br>
+      <input type="date" name="dob" formControlName="dob"><br>
+      <span style="color:red;" *ngIf="dob && dob.invalid && dob.touched">Please select your date of birth</span>
+      <span style="color:red;" *ngIf="dob && dob.errors?.['invalidDateOfBirth']">Please enter a valid date of birth (minimum age is 18)</span>
     </div>
-  
+    
+
     <div class="inputs_spacs">
       <label for="city">City</label>
-      <select name="city">
-        <option>Select any one</option>
+      <select name="city" formControlName="city">
+        <option disabled>Select any one</option>
         <option>Ahmadabad</option>
         <option>Baroda</option>
         <option>Rajkot</option>
         <option>Surat</option>
-      </select><br>
+        </select><br>
+      <span style="color:red;" *ngIf="city && city.invalid && city.touched">Please select your city</span>
     </div>
-  
+
+    <div class="inputs_spacs">
+      <label for="hobby">Select your hobby</label>
+    <select name="hobby" formControlName="hobby" multiple>
+      <option value="Cricket">Cricket</option>
+      <option value="book">Book</option>
+      <option value="football">Football</option>
+      <option value="movies">Movies</option>  
+      <option value="running">Running</option>
+      <option value="game">Game</option>
+      <option value="swimming">Swimming</option>
+      <option value="smoking">Smoking</option>
+     </select>
+    <span style="color:red;" *ngIf="hobby && hobby.invalid && hobby.touched">Please select your city</span>
+  </div>
+    
+    
+
     <div class="inputs_spacs">
       <label for="agree">Are you agree with terms & conditions</label>
-      <input type="checkbox" name="agree"><br>
+      <input type="checkbox" name="agree" formControlName="agree"><br>
+      <span style="color:red;" *ngIf="agree && agree.invalid && agree.touched">You have to agree with terms & condition</span>
     </div>
-  
+    
+
     <div class="inputs_spacs">
       <button type="submit">Submit</button>
       <button type="reset">Reset</button>
