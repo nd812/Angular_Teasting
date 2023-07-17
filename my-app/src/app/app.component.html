@@ -1,58 +1,59 @@
+<!-- app.component.html -->
 <div class="container">
-
   <h1>Log-In Form</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-    
-
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()" (ngNativeValidate)="false">
     <div class="inputs_spacs">
       <label for="name">Name</label>
-      <input type="text" placeholder="Enter Your Name" #name_Input name="name" formControlName="name"><br>
-      <span style="color:red;" *ngIf="name && name.invalid && name.touched">Please enter appropriate name</span>
+      <input type="text" placeholder="Enter Your Name" #name_Input name="name" formControlName="name" /><br>
+      <span style="color:red;" *ngIf="name?.invalid && (name?.touched || isFormSubmitted)">Please enter an appropriate name</span>
     </div>
 
     <div class="inputs_spacs">
       <label for="phoneNumber">Phone number</label>
-      <input type="tel" placeholder="Enter your phone number" #name_Input name="phoneNumber" formControlName="phoneNumber"><br>
-      <span style="color:red;" *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched">Please enter your phone number</span>
+      <input type="tel" placeholder="Enter your phone number" #phoneNumber_Input name="phoneNumber" formControlName="phoneNumber" /><br>
+      <span style="color:red;" *ngIf="phoneNumber?.invalid && (phoneNumber?.touched || isFormSubmitted)">Please enter your phone number</span>
     </div>
 
     <div class="inputs_spacs">
       <label for="email">Email</label>
-      <input type="email" placeholder="Enter Your Email" name="email" formControlName="email"><br>
-      <span style="color:red;" *ngIf="email && email.invalid && email.touched">Please enter appropriate email</span>
+      <input type="email" placeholder="Enter Your Email" name="email" formControlName="email" /><br>
+      <span style="color:red;" *ngIf="email?.invalid && (email?.touched || isFormSubmitted)">Please enter an appropriate email</span>
     </div>
 
     <div class="inputs_spacs">
       <label for="password">Password</label>
-      <input type="password" placeholder="Enter Your Password" name="password" formControlName="password"><br>
-      <span style="color:red;" *ngIf="password && password.invalid && password.touched">Please enter appropriate password</span>
+      <input type="password" placeholder="Enter Your Password" name="password" formControlName="password" /><br>
+      <span style="color:red;" *ngIf="password?.invalid && (password?.touched || isFormSubmitted)">Please enter an appropriate password</span>
     </div>
-    
 
+    <div class="inputs_spacs">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" placeholder="Confirm Your Password" name="confirmPassword" formControlName="confirmPassword" /><br>
+      <span style="color:red;" *ngIf="confirmPassword?.hasError('passwordsDoNotMatch') && (confirmPassword?.touched || isFormSubmitted)">Passwords do not match</span>
+    </div>
 
     <div class="inputs_spacs gender-input">
       <label>Gender</label>
       <div class="radio-group">
         <label>
-          <input type="radio" name="gender" value="male" formControlName="gender"> Male
+          <input type="radio" name="gender" value="male" formControlName="gender" /> Male
         </label>
         <label>
-          <input type="radio" name="gender" value="female" formControlName="gender"> Female
+          <input type="radio" name="gender" value="female" formControlName="gender" /> Female
         </label>
         <label>
-          <input type="radio" name="gender" value="others" formControlName="gender"> Others
+          <input type="radio" name="gender" value="others" formControlName="gender" /> Others
         </label>
-        <span style="color:red;" *ngIf="gender && gender.invalid && gender.touched">Please select yor gender</span>
+        <span style="color:red;" *ngIf="gender?.invalid && (gender?.touched || isFormSubmitted)">Please select your gender</span>
       </div>
     </div>
 
     <div class="inputs_spacs">
       <label for="dob">Date of Birth</label>
-      <input type="date" name="dob" formControlName="dob"><br>
-      <span style="color:red;" *ngIf="dob && dob.invalid && dob.touched">Please select your date of birth</span>
-      <span style="color:red;" *ngIf="dob && dob.errors?.['invalidDateOfBirth']">Please enter a valid date of birth (minimum age is 18)</span>
+      <input type="date" name="dob" formControlName="dob" max="{{ getMaxDate() }}" /><br>
+      <span style="color:red;" *ngIf="dob?.invalid && (dob?.touched || isFormSubmitted)">Please select your date of birth</span>
+      <span style="color:red;" *ngIf="dob?.hasError('invalidDateOfBirth') && isFormSubmitted">Please enter a valid date of birth (minimum age is 18)</span>
     </div>
-    
 
     <div class="inputs_spacs">
       <label for="city">City</label>
@@ -62,36 +63,33 @@
         <option>Baroda</option>
         <option>Rajkot</option>
         <option>Surat</option>
-        </select><br>
-      <span style="color:red;" *ngIf="city && city.invalid && city.touched">Please select your city</span>
+      </select><br>
+      <span style="color:red;" *ngIf="city?.invalid && (city?.touched || isFormSubmitted)">Please select your city</span>
     </div>
 
     <div class="inputs_spacs">
       <label for="hobby">Select your hobby</label>
-    <select name="hobby" formControlName="hobby" multiple>
-      <option value="Cricket">Cricket</option>
-      <option value="book">Book</option>
-      <option value="football">Football</option>
-      <option value="movies">Movies</option>  
-      <option value="running">Running</option>
-      <option value="game">Game</option>
-      <option value="swimming">Swimming</option>
-      <option value="smoking">Smoking</option>
-     </select>
-    <span style="color:red;" *ngIf="hobby && hobby.invalid && hobby.touched">Please select your city</span>
-  </div>
-    
-    
+      <select name="hobby" formControlName="hobby" multiple>
+        <option value="Cricket">Cricket</option>
+        <option value="book">Book</option>
+        <option value="football">Football</option>
+        <option value="movies">Movies</option>  
+        <option value="running">Running</option>
+        <option value="game">Game</option>
+        <option value="swimming">Swimming</option>
+        <option value="smoking">Smoking</option>
+      </select>
+      <span style="color:red;" *ngIf="hobby?.invalid && (hobby?.touched || isFormSubmitted)">Please select your hobby</span>
+    </div>
 
     <div class="inputs_spacs">
       <label for="agree">Are you agree with terms & conditions</label>
-      <input type="checkbox" name="agree" formControlName="agree"><br>
-      <span style="color:red;" *ngIf="agree && agree.invalid && agree.touched">You have to agree with terms & condition</span>
+      <input type="checkbox" name="agree" formControlName="agree" /><br>
+      <span style="color:red;" *ngIf="agree?.invalid && (agree?.touched || isFormSubmitted)">You have to agree with terms & conditions</span>
     </div>
-    
 
     <div class="inputs_spacs">
-      <button type="submit">Submit</button>
+      <button type="submit" (click)="isFormSubmitted = true">Submit</button>
       <button type="reset">Reset</button>
     </div>
   </form>
