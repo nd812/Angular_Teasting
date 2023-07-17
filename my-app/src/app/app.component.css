@@ -4,10 +4,10 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  margin-top:10%;
+  margin-top: 10%;
 }
 
-.inputs_spacs {
+.inputs_space {
   margin-bottom: 20px;
 }
 
@@ -74,6 +74,7 @@ button[type="reset"]:hover {
 .gender-input {
   display: flex;
   flex-direction: column;
+  margin-bottom: 15px;
 }
 
 .radio-group {
@@ -89,4 +90,71 @@ button[type="reset"]:hover {
 
 .radio input[type="radio"] {
   margin-right: 5px;
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #6046bb;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #6046bb;
+}
+
+.tag span {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.tag-input {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.tag-input input {
+  flex: 1;
+  margin-right: 5px;
+  padding: 5px;
+  border: 2px solid #6046bb;
+  border-radius: 5px;
+}
+
+.tag-input button {
+  padding: 5px 10px;
+  background-color: #6046bb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-with-button {
+  position: relative;
+}
+
+.input-with-button input {
+  padding-right: 30px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-with-button button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 30px;
+  color: #f1f3f1;
+  background-color: #6046bb;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
