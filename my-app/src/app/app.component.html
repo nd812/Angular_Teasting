@@ -1,31 +1,55 @@
+<!-- app.component.html -->
 <div class="container">
   <h1>Log-In Form</h1>
   <form [formGroup]="loginForm" (ngSubmit)="loginUser()" (ngNativeValidate)="false">
+<<<<<<< HEAD
     <div class="inputs_space">
       <label for="name">Name</label>
       <input type="text" placeholder="Enter Your Name" name="name" formControlName="name" /><br>
       <span style="color:red;" *ngIf="name?.invalid && isFormSubmitted">Please enter an appropriate name</span>
+=======
+    <div class="inputs_spacs">
+      <label for="name">Name</label>
+      <input type="text" placeholder="Enter Your Name" #name_Input name="name" formControlName="name" /><br>
+      <span style="color:red;" *ngIf="name?.invalid && (name?.touched || isFormSubmitted)">Please enter an appropriate name</span>
+>>>>>>> a123587b2492e736d70614414542101a8b6caec8
     </div>
 
     <div class="inputs_space">
       <label for="phoneNumber">Phone number</label>
+<<<<<<< HEAD
       <input type="tel" placeholder="Enter your phone number" name="phoneNumber" formControlName="phoneNumber" /><br>
       <span style="color:red;" *ngIf="phoneNumber?.invalid && isFormSubmitted">Please enter your phone number</span>
+=======
+      <input type="tel" placeholder="Enter your phone number" #phoneNumber_Input name="phoneNumber" formControlName="phoneNumber" /><br>
+      <span style="color:red;" *ngIf="phoneNumber?.invalid && (phoneNumber?.touched || isFormSubmitted)">Please enter your phone number</span>
+>>>>>>> a123587b2492e736d70614414542101a8b6caec8
     </div>
 
     <div class="inputs_space">
       <label for="email">Email</label>
       <input type="email" placeholder="Enter Your Email" name="email" formControlName="email" /><br>
+<<<<<<< HEAD
       <span style="color:red;" *ngIf="email?.invalid && isFormSubmitted">Please enter an appropriate email</span>
+=======
+      <span style="color:red;" *ngIf="email?.invalid && (email?.touched || isFormSubmitted)">Please enter an appropriate email</span>
+>>>>>>> a123587b2492e736d70614414542101a8b6caec8
     </div>
 
     <div class="inputs_space">
       <label for="password">Password</label>
       <input type="password" placeholder="Enter Your Password" name="password" formControlName="password" /><br>
+<<<<<<< HEAD
       <span style="color:red;" *ngIf="password?.invalid && isFormSubmitted">Please enter an appropriate password</span>
     </div>
 
     <div class="inputs_space">
+=======
+      <span style="color:red;" *ngIf="password?.invalid && (password?.touched || isFormSubmitted)">Please enter an appropriate password</span>
+    </div>
+
+    <div class="inputs_spacs">
+>>>>>>> a123587b2492e736d70614414542101a8b6caec8
       <label for="confirmPassword">Confirm Password</label>
       <input type="password" placeholder="Confirm Your Password" name="confirmPassword" formControlName="confirmPassword" /><br>
       <span style="color:red;" *ngIf="confirmPassword?.hasError('passwordsDoNotMatch') && (confirmPassword?.touched || isFormSubmitted)">Passwords do not match</span>
@@ -43,13 +67,21 @@
         <label>
           <input type="radio" name="gender" value="others" formControlName="gender" /> Others
         </label>
+<<<<<<< HEAD
         <span style="color:red;" *ngIf="gender?.invalid &&  isFormSubmitted">Please select your gender</span>
+=======
+        <span style="color:red;" *ngIf="gender?.invalid && (gender?.touched || isFormSubmitted)">Please select your gender</span>
+>>>>>>> a123587b2492e736d70614414542101a8b6caec8
       </div>
     </div>
 
     <div class="inputs_space">
       <label for="dob">Date of Birth</label>
       <input type="date" name="dob" formControlName="dob" max="{{ getMaxDate() }}" /><br>
+<<<<<<< HEAD
+=======
+      <span style="color:red;" *ngIf="dob?.invalid && (dob?.touched || isFormSubmitted)">Please select your date of birth</span>
+>>>>>>> a123587b2492e736d70614414542101a8b6caec8
       <span style="color:red;" *ngIf="dob?.hasError('invalidDateOfBirth') && isFormSubmitted">Please enter a valid date of birth (minimum age is 18)</span>
     </div>
 
@@ -62,13 +94,18 @@
         <option>Rajkot</option>
         <option>Surat</option>
       </select><br>
+<<<<<<< HEAD
       <span style="color:red;" *ngIf="city?.invalid && isFormSubmitted">Please select your city</span>
+=======
+      <span style="color:red;" *ngIf="city?.invalid && (city?.touched || isFormSubmitted)">Please select your city</span>
+>>>>>>> a123587b2492e736d70614414542101a8b6caec8
     </div>
 
     <div class="inputs_space">
       <label for="hobby">Select your hobby</label>
       <select name="hobby" formControlName="hobby" multiple>
         <option value="Cricket">Cricket</option>
+<<<<<<< HEAD
         <option value="Book">Book</option>
         <option value="Football">Football</option>
         <option value="Movies">Movies</option>  
@@ -94,9 +131,26 @@
         {{ tag }}
         <span (click)="removeTag(tag)">x</span>
       </div>
+=======
+        <option value="book">Book</option>
+        <option value="football">Football</option>
+        <option value="movies">Movies</option>  
+        <option value="running">Running</option>
+        <option value="game">Game</option>
+        <option value="swimming">Swimming</option>
+        <option value="smoking">Smoking</option>
+      </select>
+      <span style="color:red;" *ngIf="hobby?.invalid && (hobby?.touched || isFormSubmitted)">Please select your hobby</span>
     </div>
-    
 
+    <div class="inputs_spacs">
+      <label for="agree">Are you agree with terms & conditions</label>
+      <input type="checkbox" name="agree" formControlName="agree" /><br>
+      <span style="color:red;" *ngIf="agree?.invalid && (agree?.touched || isFormSubmitted)">You have to agree with terms & conditions</span>
+>>>>>>> a123587b2492e736d70614414542101a8b6caec8
+    </div>
+
+<<<<<<< HEAD
     
 
     <div class="inputs_space">
@@ -106,6 +160,9 @@
     </div>
 
     <div class="inputs_space">
+=======
+    <div class="inputs_spacs">
+>>>>>>> a123587b2492e736d70614414542101a8b6caec8
       <button type="submit" (click)="isFormSubmitted = true">Submit</button>
       <button type="reset">Reset</button>
     </div>
